@@ -14,18 +14,18 @@ SERVER.listen(SETTINGS.server.port, SETTINGS.server.host);
 
 // Handle incoming requests, which should only be events coming from Slack.
 function handleRequest(req, res) {
-    // Drop requests without the correct verification token.
     if (req.body.token !== SETTINGS.slack.token) {
+        // Drop requests without the correct verification token.
         res.status(403).send();
-        // In case of URL verification, return the given challenge.
     } else if (req.body.type === 'url_verification') {
+        // In case of URL verification, return the given challenge.
         res.send(req.body.challenge);
-        // In case the request signifies an event, pass it through to Firebase.
     } else if (req.body.type === 'event_callback') {
+        // In case the request signifies an event, pass it through to Firebase.
         res.send();
         handleEvent(req.body);
-        // In all other cases, consider the request invalid.
     } else {
+        // In all other cases, consider the request invalid.
         res.status(400).send();
     }
 }
