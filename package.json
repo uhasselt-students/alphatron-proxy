@@ -1,0 +1,40 @@
+{
+  "name": "@uhasselt-students/alphatron-proxy",
+  "version": "1.0.0",
+  "description": "The proxy server between Slack and Alphatron.",
+  "keywords": [
+    "alphatron",
+    "slack",
+    "bot",
+    "proxy"
+  ],
+  "homepage": "https://github.com/uhasselt-students/alphatron-proxy",
+  "bugs": "https://github.com/uhasselt-students/alphatron-proxy/issues",
+  "license": "MIT",
+  "author": {
+    "name": "Reinaert Van de Cruys",
+    "email": "reinaert.vandecruys@gmail.com",
+    "url" : "https://reinaertvandecruys.me"
+  },
+  "contributors": [],
+  "scripts": {
+    "lint": "./node_modules/.bin/tslint -p tslint.json",
+    "build": "./node_modules/.bin/tsc",
+    "deploy": "npm run build && pm2 restart alphatron"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uhasselt-students/alphatron-proxy.git"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "@types/node": "^9.3.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.5.3"
+  }
+}

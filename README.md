@@ -1,1 +1,3 @@
 # alphatron-proxy
+
+This is the proxy server between Slack and [Alphatron](https://github.com/uhasselt-students/alphatron). Since Alphatron is hosted using Firebase Functions on the free Spark plan, outgoing requests to third parties are disabled. However, POST requests to Slack are needed for a bot to be able to respond to events. For that reason, we send Slack events to this proxy server rather than directly to Alphatron. When the proxy server forwards the message to Firebase, it also waits for a HTTP response, which circumvents the outgoing requests limitation. The response can contain multiple POST requests to Slack, stored in JSON. The proxy server parses these requests and sends them to Slack one by one.
