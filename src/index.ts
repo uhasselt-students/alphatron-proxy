@@ -51,7 +51,7 @@ function handleResponse(err, res) {
     // Run through the list of actions sent back and execute them one by one.
     for (const action of JSON.parse(res.body).actions) {
         request({
-            uri: 'https://slack.com/api/' + encodeURIComponent(action.command),
+            uri: 'https://slack.com/api/' + encodeURIComponent(action.method),
             body: JSON.stringify(action.body),
             method: 'POST',
             headers: {
